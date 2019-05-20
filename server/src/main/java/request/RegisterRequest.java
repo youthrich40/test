@@ -2,29 +2,29 @@ package request;
 
 public class RegisterRequest {
 
-    private String username;
+    private String userName;
     private String password;
     private String email;
     private String gender;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
 
 
-    public RegisterRequest(String username, String password, String email, String gender, String firstname, String lastname) {
-        this.username = username;
+    public RegisterRequest(String userName, String password, String email, String firstName, String lastName, String gender) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
-        this.firstname = firstname;
-        this.lastname = lastname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -51,19 +51,19 @@ public class RegisterRequest {
         this.gender = gender;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

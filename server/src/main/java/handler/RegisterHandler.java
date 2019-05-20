@@ -9,17 +9,23 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 
+import facade.FillSerivce;
 import facade.RegisterService;
+import request.FillRequest;
 import request.RegisterRequest;
 import response.RegisterResponse;
 
 public class RegisterHandler implements HttpHandler {
 
+    Gson gson = new Gson();
     ReaderWriter readerWriter = new ReaderWriter();
     RegisterRequest registerRequest;
     RegisterResponse registerResponse;
     RegisterService registerService = new RegisterService();
-    Gson gson = new Gson();
+
+    FillRequest fillRequest;
+    FillSerivce fillSerivce = new FillSerivce();
+
 
     // Handles HTTP requests containing the "/games/list" URL path.
     // The "exchange" parameter is an HttpExchange object, which is
@@ -73,6 +79,8 @@ public class RegisterHandler implements HttpHandler {
                     // (this is unrealistic because it always returns the same answer).
                     String respData = readerWriter.readString(exchange.getRequestBody());
 
+                    System.out.println(respData);
+
                     registerRequest = gson.fromJson(respData, RegisterRequest.class);
                     registerResponse = registerService.register(registerRequest);
 
@@ -91,8 +99,10 @@ public class RegisterHandler implements HttpHandler {
                     // sending data and the response is complete/
                     respBody.close();
 
+                    //default fill generation 4
+                    fillRequest = new FillRequest(registerRequest.getUserName());
+                    fillSerivce.fill(fillRequest);
                     success = true;
-
                 }
             }
 
